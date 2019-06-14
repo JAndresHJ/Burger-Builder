@@ -7,7 +7,9 @@ class Modal extends Component {
     // Improvement: The purpose of shouldComponentUpdate is to make sure 
     // that the OrderSummary component only renders when the Modal is shown
     shouldComponentUpdate(nextProps, nextState){
-        return nextProps.show !== this.props.show;
+        // Children could be either the OrderSummary or the Spinner component
+        // then if a change occurs (Spinner shows or hide) the modal should be updated
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
     render() {
